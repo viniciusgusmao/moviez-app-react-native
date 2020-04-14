@@ -10,6 +10,7 @@ export const TitlePage = styled(BaseText)`
   font-weight: bold;
   font-size: 23px;
   margin-bottom: 8px;
+  margin-top: ${(props) => props.marginTop ? `${props.marginTop}px` : '0px'};
 `;
 
 interface ITitleThumb {

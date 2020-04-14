@@ -3,15 +3,9 @@ import { TitleThumb } from '../Common';
 import Star from '../Star';
 import styled from 'styled-components';
 import urls from '../../res/urls';
+import { IBigCard } from '../../interfaces';
 
-interface IMainCard {
-  id: number,
-  poster_path: string,
-  title: string,
-  vote_average: number
-}
-
-const MainCard: React.FC<IMainCard> = ({ id, poster_path, title, vote_average }) => (
+const BigCard: React.FC<IBigCard> = ({ id, poster_path, title, vote_average }) => (
     <Container>
       <Poster resizeMode="cover" source={{ uri: `${urls.baseImages}${poster_path}`}} />
       <TitleThumb fontSize={16}>{title.length > 25 ? title.substr(0,25)+'...' : title}</TitleThumb>
@@ -32,4 +26,4 @@ const Poster = styled.Image`
   border-radius: 15px;
 `;
 
-export default MainCard;
+export default BigCard;

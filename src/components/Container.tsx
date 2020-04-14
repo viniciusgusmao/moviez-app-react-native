@@ -9,7 +9,7 @@ const Container: React.FC = ({ children }) => {
     <AfterInteractions>
       <MyContainer contentContainerStyle={{
         marginTop: Constants.statusBarHeight,
-        padding: 20
+        padding: 10
       }}>
         {children}
       </MyContainer>
