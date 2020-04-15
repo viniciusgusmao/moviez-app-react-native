@@ -15,7 +15,7 @@ const Popular:React.FC<PropsPopular> = ({ movies }) => (
         {movies?.map((movie:IBigCard) => <BigCard 
           key={movie.id}
           id={movie.id} 
-          title={movie.title} 
+          title={movie.title ? movie.title : movie.original_name}  
           poster_path={movie.poster_path} 
           vote_average={movie.vote_average} 
         />)}

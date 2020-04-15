@@ -12,3 +12,11 @@ export const getPopularMovies = () => {
 export const getTopRatedMovies = () => {
   return axios.get(`${urls.baseUrlApi}/movie/top_rated`, { params: { page: 1, api_key } });
 }
+
+export const getPopularTV = () => {
+  return axios.get(`${urls.baseUrlApi}/tv/popular`, { params: { page: 1, api_key } });
+}
+
+export const getTopRatedTV = () => {
+  return axios.get(`${urls.baseUrlApi}/tv/top_rated`, { params: { page: 1, api_key } });
+}

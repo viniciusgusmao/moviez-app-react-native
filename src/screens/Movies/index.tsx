@@ -24,13 +24,13 @@ const MovieScreen: React.FC = () => {
   }, [])
 
   if (loading)
-    return <Loading/>
+    return <Loading />
 
   return (
-    <Container>      
-      <Popular movies={popularMovies} />
-      <TopRated movies={topRatedMovies}  />
-    </Container>
+      <Container>      
+        <Popular movies={popularMovies} />
+        <TopRated movies={topRatedMovies}  />
+      </Container>
   );
 }
 
