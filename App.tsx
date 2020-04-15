@@ -7,6 +7,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 import MovieScreen from './src/screens/Movies';
 import TVScreen from './src/screens/TV';
+import colors from './src/res/colors';
 
 const Tab = createBottomTabNavigator();
 
@@ -15,7 +16,7 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator          
          screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color }) => {
+          tabBarIcon: ({ color }) => {
             let iconName;
             if (route.name === 'Movies') {
               iconName = 'local-movies';
@@ -31,6 +32,8 @@ export default function App() {
           style: {
             height: 70,
             padding: 8,
+            borderTopColor: colors.lightGray,
+            borderTopWidth: 1
           }
         }}
       >

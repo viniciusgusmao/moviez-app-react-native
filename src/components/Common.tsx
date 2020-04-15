@@ -8,7 +8,7 @@ const BaseText = styled.Text`
 export const TitlePage = styled(BaseText)`  
   color: ${colors.primaryTitle};
   font-weight: bold;
-  font-size: 23px;
+  font-size: 26px;
   margin-bottom: 8px;
   margin-top: ${(props) => props.marginTop ? `${props.marginTop}px` : '0px'};
 `;

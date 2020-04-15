@@ -9,7 +9,7 @@ const Container: React.FC = ({ children }) => {
     <AfterInteractions>
       <MyContainer contentContainerStyle={{
         marginTop: Constants.statusBarHeight,
-        padding: 10
+        padding: 15
       }}>
         {children}
       </MyContainer>
@@ -19,6 +19,7 @@ const Container: React.FC = ({ children }) => {
 
 const MyContainer = styled.ScrollView`
   flex: 1;
+  background-color: white;
 `;
 
 export default Container;

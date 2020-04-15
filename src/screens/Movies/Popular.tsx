@@ -1,20 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ScrollView } from 'react-native';
 import BigCard from '../../components/BigCard';
-import ErrorApi from '../../components/ErrorApi';
 import { TitlePage } from '../../components/Common';
 import { IBigCard } from '../../interfaces';
 
 type PropsPopular = {
-  queryHighlight: IBigCard[],
-  errorQueryHighlight: string
+  movies: IBigCard[]
 }
 
-const Popular:React.FC<PropsPopular> = ({ queryHighlight, errorQueryHighlight }) => (
+const Popular:React.FC<PropsPopular> = ({ movies }) => ( 
     <>
       <TitlePage>Popular</TitlePage>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        {queryHighlight?.map((movie:IBigCard) => <BigCard 
+        {movies?.map((movie:IBigCard) => <BigCard 
           key={movie.id}
           id={movie.id} 
           title={movie.title} 
@@ -22,9 +20,9 @@ const Popular:React.FC<PropsPopular> = ({ queryHighlight, errorQueryHighlight })
           vote_average={movie.vote_average} 
         />)}
       </ScrollView>
-      {errorQueryHighlight != '' && <ErrorApi>{errorQueryHighlight}</ErrorApi>} 
     </>
-);
+)
+
 
 export default Popular;
 

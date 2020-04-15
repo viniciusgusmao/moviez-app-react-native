@@ -4,7 +4,7 @@ import colors from '../res/colors';
 
 const Loading:React.FC = () => (
   <View style={[styles.container, styles.horizontal]}>
-    <ActivityIndicator size="small" color={colors.lightPurple} />
+    <ActivityIndicator size="large" color={colors.lightPurple} />
   </View>
 );
 
