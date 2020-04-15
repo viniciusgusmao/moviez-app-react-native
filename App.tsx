@@ -1,13 +1,12 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialIcons } from '@expo/vector-icons';
 
-import MovieScreen from './src/screens/Movies';
-import TVScreen from './src/screens/TV';
-import colors from './src/res/colors';
+import MovieScreen from 'screens/Movies';
+import TVScreen from 'screens/TV';
+import colors from 'res/colors';
 
 const Tab = createBottomTabNavigator();
 
