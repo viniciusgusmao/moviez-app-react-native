@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { ScrollView } from 'react-native';
-import BigCard from '../../components/BigCard';
-import { TitlePage } from '../../components/Common';
-import { IBigCard } from '../../interfaces';
+import BigCard from 'components/BigCard';
+import { TitlePage } from 'components/Common';
+import { IBigCard } from 'interfaces';
 
 type PropsPopular = {
   movies: IBigCard[]

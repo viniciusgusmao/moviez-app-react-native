@@ -1,10 +1,10 @@
 import React from 'react';
-import { TitleThumb } from './Common';
-import Star from './Star';
+import { TitleThumb } from 'components/Common';
+import Star from 'components/Star';
 import styled from 'styled-components';
-import urls from '../res/urls';
-import { SubtitleThumb } from './Common';
-import { ISmallCard } from '../interfaces';
+import urls from 'res/urls';
+import { SubtitleThumb } from 'components/Common';
+import { ISmallCard } from 'interfaces';
 
 const SmallCard: React.FC<ISmallCard> = ({ id, poster_path, title, vote_average, genre }) => (
     <Container>

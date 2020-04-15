@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import {AfterInteractions} from 'react-native-interactions';
 import styled from 'styled-components';
 import Constants from 'expo-constants';

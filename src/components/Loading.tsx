@@ -1,6 +1,6 @@
 import React from 'react';
 import { ActivityIndicator, View, StyleSheet } from 'react-native';
-import colors from '../res/colors';
+import colors from 'res/colors';
 
 const Loading:React.FC = () => (
   <View style={[styles.container, styles.horizontal]}>

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import colors from '../res/colors';
+import colors from 'res/colors';
 
 const BaseText = styled.Text`
   font-family: 'Roboto';

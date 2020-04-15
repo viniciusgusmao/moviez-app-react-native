@@ -1,9 +1,9 @@
 import React from 'react';
-import { TitleThumb } from './Common';
-import Star from './Star';
+import { TitleThumb } from 'components/Common';
+import Star from 'components/Star';
 import styled from 'styled-components';
-import urls from '../res/urls';
-import { IBigCard } from '../interfaces';
+import urls from 'res/urls';
+import { IBigCard } from 'interfaces';
 
 const BigCard: React.FC<IBigCard> = ({ id, poster_path, title, vote_average }) => (
     <Container>

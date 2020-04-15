@@ -1,6 +1,6 @@
-import React,{ useEffect,useState } from 'react';
-import { Rating, AirbnbRating } from 'react-native-ratings';
-import colors from '../res/colors';
+import React from 'react';
+import { Rating } from 'react-native-ratings';
+import colors from 'res/colors';
 
 import styled from 'styled-components';
 

@@ -1,9 +1,9 @@
 import React,{ useState, useEffect } from 'react';
-import Container from '../../components/Container';
-import Popular from './Popular';
-import TopRated from './TopRated';
-import Loading from '../../components/Loading';
-import { getPopularMovies, getTopRatedMovies } from '../../services';
+import Container from 'components/Container';
+import Popular from 'screens/Movies/Popular';
+import TopRated from 'screens/Movies/TopRated';
+import Loading from 'components/Loading';
+import { getPopularMovies, getTopRatedMovies } from 'services';
 import axios from 'axios';
 
 const MovieScreen: React.FC = () => {
