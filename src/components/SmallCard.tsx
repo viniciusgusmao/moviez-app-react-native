@@ -5,17 +5,24 @@ import styled from 'styled-components';
 import urls from 'res/urls';
 import { SubtitleThumb } from 'components/Common';
 import { ISmallCard } from 'interfaces';
+import { TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const SmallCard: React.FC<ISmallCard> = ({ id, poster_path, title, vote_average, genre }) => (
-    <Container>
-      <Poster resizeMode="cover" source={{ uri: `${urls.baseImages}${poster_path}`}} />
-      <SubContainer>
-        <TitleThumb fontSize={16}>{title}</TitleThumb>
-        <Star vote_average={vote_average} />
-        <SubtitleThumb>Action, Suspense</SubtitleThumb>
-      </SubContainer>
-    </Container>
-);
+const SmallCard: React.FC<ISmallCard> = ({ id, poster_path, title, vote_average, genre, isMovie }) => {
+  const navigation = useNavigation();
+  return (
+    <TouchableOpacity onPress={() => navigation.navigate('Details',{ id, isMovie })}>
+      <Container>
+        <Poster resizeMode="cover" source={{ uri: `${urls.baseImages}${poster_path}`}} />
+        <SubContainer>
+          <TitleThumb fontSize={16}>{title}</TitleThumb>
+          <Star vote_average={vote_average} />
+          <SubtitleThumb>{genre}</SubtitleThumb>
+        </SubContainer>
+      </Container>
+    </TouchableOpacity>
+  );
+}
 
 
 const Container = styled.View`

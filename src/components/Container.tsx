@@ -3,7 +3,12 @@ import {AfterInteractions} from 'react-native-interactions';
 import styled from 'styled-components';
 import Constants from 'expo-constants';
 
-const Container: React.FC = ({ children }) => {
+type Props = {
+  children: React.ReactNode,
+  padding?: number
+} 
+
+const Container: React.FC<Props> = ({ children, padding }: Props) => {
   return (
     <AfterInteractions>
       <MyContainer contentContainerStyle={{
