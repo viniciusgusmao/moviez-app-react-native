@@ -2,8 +2,12 @@ import React,{ useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { getImagesMovieById } from 'services/movie';
 import Loading from 'components/Loading';
-import { IPhoto } from 'interfaces';
 import urls from 'res/urls';
+import { Dimensions, Image, FlatList, View, Text } from 'react-native';
+
+const {width} = Dimensions.get('window');
+const numberGrid = 3;
+const itemWidth = (width-12) / numberGrid;
 
 type Props = {
   label: string,
@@ -21,24 +25,30 @@ const ImagesGallery:React.FC<Props> = ({ label, movieId }: Props) => {
     })
   }, [])
 
+  const renderItem:React.FC = ({item}) => {
+    return (<View>
+      <Image style={{ width: itemWidth, height: itemWidth, resizeMode: 'cover', borderWidth: 2, borderColor: 'white' }} source={{ uri: `${urls.baseImages}${item.file_path}` }} />
+    </View>)
+   }
+
   if (loading)
     return <Loading />
 
   return (
-        <Container>
-          <Label>{label}</Label>
-          <Gallery>
-          {images.map((item: IPhoto) => <Photo source={{ uri: `${urls.baseImages}${item.file_path}` }} />)}
-          </Gallery>
-        </Container>
+      <View>
+        <FlatList
+          ListHeaderComponent={() => <Text style={{
+            color: '#A9A4A4',
+            fontSize: 12,
+            fontWeight: 'bold'
+          }}>{label}</Text>}          
+          keyExtractor={(_, index) => index}
+          numColumns={numberGrid} data={images} 
+          renderItem={renderItem} 
+        />
+      </View>
     );
 }
-
-const Photo = styled.Image`
-  width: 300px;
-  height: 200px;
-  margin: 3px;
-`;
 
 const Gallery = styled.View`
   flex-wrap: wrap;

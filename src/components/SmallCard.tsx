@@ -12,7 +12,7 @@ const SmallCard: React.FC<ISmallCard> = ({ id, poster_path, title, vote_average,
   const navigation = useNavigation();
   const screen: string = isMovie ? 'MovieDetails' : 'TVDetails';
   return (
-    <TouchableOpacity onPress={() => navigation.navigate(screen,{ id })}>
+    <TouchableOpacity onPress={() => navigation.navigate({ name: screen, key: id, params: { id } })}>
       <Container>
         <Poster resizeMode="cover" source={{ uri: `${urls.baseImages}${poster_path}`}} />
         <SubContainer>
@@ -28,9 +28,10 @@ const SmallCard: React.FC<ISmallCard> = ({ id, poster_path, title, vote_average,
 
 const Container = styled.View`
   flex-direction: row;
-  flex: 1;
+  width: 100%;
   margin-bottom: 12px;
   padding-right: 10px;
+  height: 120px;
 `;
 
 const SubContainer = styled.View`

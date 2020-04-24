@@ -11,7 +11,7 @@ const BigCard: React.FC<IBigCard> = ({ id, poster_path, title, vote_average, isM
   const navigation = useNavigation();
   const screen: string = isMovie ? 'MovieDetails' : 'TVDetails';
   return (
-    <TouchableOpacity onPress={() => navigation.navigate(screen,{ id })}>
+    <TouchableOpacity onPress={() => navigation.navigate({ name: screen, key: id, params: { id } })}>
       <Container>
         <Poster resizeMode="cover" source={{ uri: `${urls.baseImages}${poster_path}`}} />
         <TitleThumb fontSize={16}>{title.length > 25 ? title.substr(0,25)+'...' : title}</TitleThumb>

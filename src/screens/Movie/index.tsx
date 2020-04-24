@@ -1,8 +1,7 @@
 import React,{ useEffect, useState } from 'react';
-import { Dimensions } from 'react-native';
+import { Dimensions, View } from 'react-native';
 import styled from 'styled-components';
 import { MaterialIcons } from '@expo/vector-icons';
-import Constants from 'expo-constants';
 
 import { getMovieById } from 'services/movie';
 import Loading from 'components/Loading';
@@ -11,7 +10,8 @@ import { PropsRoute } from 'types';
 import urls from 'res/urls';
 import BoxItem from 'components/BoxItem';
 import Container from 'components/Container';
-import ImagesGallery from 'components/ImagesGallery';
+import ImagesGallery from 'screens/Movie/ImagesGallery';
+import SimilarMovies from 'screens/Movie/SimilarMovies';
 
 const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
   const [item, setItem] = useState<IMovie>({})
@@ -30,10 +30,15 @@ const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
 
   return (
     <Container padding={0}>    
-      <BackdropImage imageStyle={{ resizeMode: 'cover' }} source={{ uri: `${urls.baseImages}${item.backdrop_path}` }} >
-        <BackButton onPress={() => navigation.goBack() }>
-          <MaterialIcons name="arrow-back" size={34} color="white" />
-        </BackButton>
+      <BackdropImage imageStyle={{ resizeMode: 'cover' }} source={{ uri: `${urls.baseImages}${item.backdrop_path ? item.backdrop_path : item.poster_path }` }} >
+        <SectionButton>
+          <ButtonHeader onPress={() => navigation.goBack() }>
+            <MaterialIcons name="arrow-back" size={34} color="white" />
+          </ButtonHeader>
+          <ButtonHeader onPress={() => navigation.navigate('Home') }>
+            <MaterialIcons name="home" size={34} color="white" />
+          </ButtonHeader>
+        </SectionButton>
         <Title style={{
           textShadowColor: 'dimgray',
           textShadowOffset: {
@@ -47,11 +52,11 @@ const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
         <Section>
           <BoxItem label="Release Date" description={item.release_date} />
           <BoxItem label="Vote Average" description={item.vote_average} />
-          <BoxItem label="Length" description={item.runtime} />
+          <BoxItem label="Length" description={`${item.runtime}min`} />
         </Section>
         <Section>
           <BoxItem label="Genre" description={item.genres.map((item: IGenre) => item = item.name).join(', ')} />
-          <BoxItem label="Budget" description={item.budget} />
+          <BoxItem label="Budget" description={`$${item.budget}`} />
         </Section>
         <Section>
           <BoxItem label="Overview" description={item.overview} />
@@ -59,6 +64,7 @@ const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
         <Section>
           <ImagesGallery label="More Images" movieId={id} />
         </Section>
+        <SimilarMovies movieId={id} genres={item.genres} />
       </MainSection>
     </Container>
   );
@@ -66,6 +72,11 @@ const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
 
 const MainSection = styled.View`
   padding: 10px;
+`;
+
+const SectionButton = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const Section = styled.View`
@@ -81,8 +92,11 @@ const BackdropImage = styled.ImageBackground`
   justify-content: space-between;
 `;
 
-const BackButton = styled.TouchableOpacity`
-  margin-top: ${`${Constants.statusBarHeight}px`};
+const ButtonHeader = styled.TouchableOpacity`
+  background-color: dimgray;
+  width: 40px;
+  border-radius: 20px;
+  padding: 3px;
 `;
 
 const Title = styled.Text`

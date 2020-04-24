@@ -17,7 +17,7 @@ const HorizontalCard:React.FC<Props> = ({ items, title, isMovie }: Props) => (
         {items?.map((item:IBigCard) => <BigCard 
           key={item.id}
           id={item.id} 
-          title={item.title ? item.title : item.original_name}  
+          title={item.original_title ? item.original_title : item.original_name}  
           poster_path={item.poster_path} 
           isMovie={isMovie}        
           vote_average={item.vote_average} 
