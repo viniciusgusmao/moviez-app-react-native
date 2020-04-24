@@ -4,12 +4,13 @@ import styled from 'styled-components';
 import { MaterialIcons } from '@expo/vector-icons';
 import Constants from 'expo-constants';
 
-import { getMovieById } from 'services';
+import { getMovieById } from 'services/movie';
 import Loading from 'components/Loading';
 import { IMovie, IGenre } from 'interfaces';
 import { PropsRoute } from 'types';
 import urls from 'res/urls';
 import BoxItem from 'components/BoxItem';
+import ImagesGallery from 'components/ImagesGallery';
 
 const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
   const [item, setItem] = useState<IMovie>({})
@@ -55,6 +56,9 @@ const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
         </Section>
         <Section>
           <BoxItem label="Overview" description={item.overview} />
+        </Section>
+        <Section>
+          <ImagesGallery label="More Images" movieId={id} />
         </Section>
       </Container>
     </ScrollView>

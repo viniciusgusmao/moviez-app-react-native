@@ -31,7 +31,7 @@ export interface IMovie {
   budget: number,
   overview: string,
   backdrop_path: string,
-  production_companies: IProductionCompany[]  
+  production_companies: IProductionCompany[]
 }
 
 

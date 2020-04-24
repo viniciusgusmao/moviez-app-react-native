@@ -6,7 +6,8 @@ import VerticalCard from 'components/VerticalCard';
 import HorizontalCard from 'components/HorizontalCard';
 import Loading from 'components/Loading';
 
-import { getPopularMovies, getUpcomingMovies, getGenreMovies, getPopularTV, getTopRatedTV, getGenreTV } from 'services';
+import { getPopularMovies, getUpcomingMovies, getGenreMovies } from 'services/movie';
+import { getPopularTV, getTopRatedTV, getGenreTV } from 'services/tv';
 
 const Dashboard: React.FC = ({ route }) => {
   const { isMovie, title1, title2 } = route.params;
