@@ -22,18 +22,16 @@ export interface IProductionCompany {
   origin_country: string
 }
 
-export interface IMovie {
-  data: {
-    original_title: string,
-    release_date: string,
-    vote_average: number,
-    runtime: number,
-    genre: IGenre,
-    budget: number,
-    overview: string,
-    backdrop_path: string,
-    production_companies: IProductionCompany[]
-  }
+export interface IMovie {  
+  original_title: string,
+  release_date: string,
+  vote_average: number,
+  runtime: number,
+  genre: IGenre,
+  budget: number,
+  overview: string,
+  backdrop_path: string,
+  production_companies: IProductionCompany[]  
 }
 
 

@@ -7,7 +7,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { MaterialIcons } from '@expo/vector-icons';
 
 import Dashboard from 'screens/Dashboard';
-import Details from 'screens/Details';
+import Movie from 'screens/Movie';
+import TV from 'screens/TV';
 import colors from 'res/colors';
 
 const Tab = createBottomTabNavigator();
@@ -48,7 +49,10 @@ const App:React.FC = () => (
       <Stack.Screen name="Home" component={Home} options={{
         headerShown: false
       }} />
-      <Stack.Screen name="Details" component={Details} options={{
+      <Stack.Screen name="MovieDetails" component={Movie} options={{
+        headerShown: false
+      }} />
+      <Stack.Screen name="TVDetails" component={TV} options={{
         headerShown: false
       }} />
     </Stack.Navigator>

@@ -5,14 +5,8 @@ import Container from 'components/Container';
 import VerticalCard from 'components/VerticalCard';
 import HorizontalCard from 'components/HorizontalCard';
 import Loading from 'components/Loading';
-import { Text, View } from 'react-native';
 
 import { getPopularMovies, getUpcomingMovies, getGenreMovies, getPopularTV, getTopRatedTV, getGenreTV } from 'services';
-
-const typeTab = {
-  movies: () => [ getUpcomingMovies(), getPopularMovies(), getGenreMovies() ],
-  tv: () => [ getPopularTV(), getTopRatedTV(), getGenreTV()]
-}
 
 const Dashboard: React.FC = ({ route }) => {
   const { isMovie, title1, title2 } = route.params;
@@ -22,7 +16,7 @@ const Dashboard: React.FC = ({ route }) => {
   const [loading,setLoading] = useState(true);
 
   useEffect(() => {
-    axios.all(isMovie ? typeTab.movies() : typeTab.tv())
+    axios.all(isMovie ? [ getUpcomingMovies(), getPopularMovies(), getGenreMovies() ] : [ getPopularTV(), getTopRatedTV(), getGenreTV()])
       .then(axios.spread((qHor, qVer, genres) => {
         setQueryHor(qHor.data.results);
         setQueryVer(qVer.data.results);  
@@ -40,8 +34,8 @@ const Dashboard: React.FC = ({ route }) => {
 
   return (
       <Container>      
-        <HorizontalCard title={title1} items={queryHor} />
-        <VerticalCard title={title2} genres={genres} items={queryVer} isMovie={true}  />
+        <HorizontalCard title={title1} items={queryHor} isMovie={isMovie} />
+        <VerticalCard title={title2} genres={genres} items={queryVer} isMovie={isMovie}  />
       </Container>
   );
 }

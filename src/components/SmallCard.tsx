@@ -10,8 +10,9 @@ import { useNavigation } from '@react-navigation/native';
 
 const SmallCard: React.FC<ISmallCard> = ({ id, poster_path, title, vote_average, genre, isMovie }) => {
   const navigation = useNavigation();
+  const screen: string = isMovie ? 'MovieDetails' : 'TVDetails';
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('Details',{ id, isMovie })}>
+    <TouchableOpacity onPress={() => navigation.navigate(screen,{ id })}>
       <Container>
         <Poster resizeMode="cover" source={{ uri: `${urls.baseImages}${poster_path}`}} />
         <SubContainer>
