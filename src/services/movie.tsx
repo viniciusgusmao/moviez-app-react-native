@@ -27,7 +27,7 @@ export const getMovieById = (id: number) => {
 }
 
 export const getImagesMovieById = (id: number) => {
-  return axios.get(`${urls.baseUrlApi}/movie/${id}/images/`, params_);
+  return axios.get(`${urls.baseUrlApi}/movie/${id}/images`, params_);
 }
 
 

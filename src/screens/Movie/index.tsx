@@ -1,5 +1,5 @@
 import React,{ useEffect, useState } from 'react';
-import { Dimensions, ScrollView } from 'react-native';
+import { Dimensions } from 'react-native';
 import styled from 'styled-components';
 import { MaterialIcons } from '@expo/vector-icons';
 import Constants from 'expo-constants';
@@ -10,6 +10,7 @@ import { IMovie, IGenre } from 'interfaces';
 import { PropsRoute } from 'types';
 import urls from 'res/urls';
 import BoxItem from 'components/BoxItem';
+import Container from 'components/Container';
 import ImagesGallery from 'components/ImagesGallery';
 
 const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
@@ -28,9 +29,7 @@ const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
     return <Loading />
 
   return (
-    <ScrollView contentContainerStyle={{
-      flex: 1
-    }}>
+    <Container padding={0}>    
       <BackdropImage imageStyle={{ resizeMode: 'cover' }} source={{ uri: `${urls.baseImages}${item.backdrop_path}` }} >
         <BackButton onPress={() => navigation.goBack() }>
           <MaterialIcons name="arrow-back" size={34} color="white" />
@@ -44,7 +43,7 @@ const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
           textShadowRadius: 1
         }}>{item.original_title}</Title>
       </BackdropImage>
-      <Container>
+      <MainSection>
         <Section>
           <BoxItem label="Release Date" description={item.release_date} />
           <BoxItem label="Vote Average" description={item.vote_average} />
@@ -60,19 +59,19 @@ const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
         <Section>
           <ImagesGallery label="More Images" movieId={id} />
         </Section>
-      </Container>
-    </ScrollView>
+      </MainSection>
+    </Container>
   );
 };
+
+const MainSection = styled.View`
+  padding: 10px;
+`;
 
 const Section = styled.View`
   justify-content: space-between;
   flex-direction: row;
   margin-bottom: 15px;
-`;
-
-const Container = styled.View`
-  margin: 15px;
 `;
 
 const BackdropImage = styled.ImageBackground`

@@ -1,29 +1,31 @@
 import React from 'react';
+import { SafeAreaView, ScrollView } from 'react-native';
 import {AfterInteractions} from 'react-native-interactions';
-import styled from 'styled-components';
 import Constants from 'expo-constants';
+
 
 type Props = {
   children: React.ReactNode,
   padding?: number
 } 
 
-const Container: React.FC<Props> = ({ children, padding }: Props) => {
+const Container: React.FC<Props> = ({ children, padding = 15 }: Props) => {
   return (
     <AfterInteractions>
-      <MyContainer contentContainerStyle={{
+      <SafeAreaView style={{
+        flex: 1,
         marginTop: Constants.statusBarHeight,
-        padding: 15
       }}>
-        {children}
-      </MyContainer>
+        <ScrollView contentContainerStyle={{
+          padding,
+          backgroundColor: 'white'
+        }}>
+          {children}
+        </ScrollView>
+      </SafeAreaView>
     </AfterInteractions>
   );
 }
 
-const MyContainer = styled.ScrollView`
-  flex: 1;
-  background-color: white;
-`;
 
 export default Container;
