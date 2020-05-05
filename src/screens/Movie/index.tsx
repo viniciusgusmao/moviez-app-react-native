@@ -12,6 +12,7 @@ import BoxItem from 'components/BoxItem';
 import Container from 'components/Container';
 import ImagesGallery from 'screens/Movie/ImagesGallery';
 import SimilarMovies from 'screens/Movie/SimilarMovies';
+import VerticalCard from 'components/VerticalCard';
 
 const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
   const [item, setItem] = useState<IMovie>({})
@@ -64,7 +65,8 @@ const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
         <Section>
           <ImagesGallery label="More Images" movieId={id} />
         </Section>
-        <SimilarMovies movieId={id} genres={item.genres} />
+
+        <VerticalCard title="Similar Movies" url={`movie/${id}/similar`} urlGenre="genre/movie/list" isMovie={true} />
       </MainSection>
     </Container>
   );

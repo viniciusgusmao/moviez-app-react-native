@@ -33,6 +33,9 @@ const ImagesGallery:React.FC<Props> = ({ label, movieId }: Props) => {
 
   if (loading)
     return <Loading />
+  
+  if (images.length == 0)
+   return null
 
   return (
       <View>

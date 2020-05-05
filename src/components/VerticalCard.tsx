@@ -1,30 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, FlatList } from 'react-native';
 import { TitlePage } from './Common';
 import { ISmallCard, IGenre } from 'interfaces';
 import SmallCard from './SmallCard';
 import Line from 'components/Line';
+import { getDynamicDataByUrlParam } from 'services';
+import Loading from 'components/Loading';
+import axios from 'axios';
 
 type Props = {
-  items: ISmallCard[],
+  url: string,
   title: string,
-  genres: IGenre[],
+  urlGenre: string,
   isMovie: boolean,
 } 
 
-const VerticalCard: React.FC<Props> = ({ items, title, genres, isMovie }: Props ) => {
+const VerticalCard: React.FC<Props> = ({ title, url, urlGenre, isMovie }: Props ) => {
+  const [items, setItems] = useState([]);
+  const [genres, setGenres] = useState([]);
+  const [loading, setLoading] = useState(false)
 
-    const _renderItem = ({item}:ISmallCard) => <SmallCard 
-      key={item.id}
-      id={item.id} 
-      title={item.original_title ? item.original_title : item.original_name} 
-      poster_path={item.poster_path} 
-      vote_average={item.vote_average} 
-      isMovie={isMovie}          
-      genre={genres.filter(item2 => item.genre_ids.includes(item2.id)).map(item => item = item.name).join(', ') }          
-    />
+  useEffect(() => {
+    setLoading(true);
+    axios.all([getDynamicDataByUrlParam(url), getDynamicDataByUrlParam(urlGenre)])
+      .then(axios.spread((items_: any, genres_: any) => {
+        setItems(items_.data.results);
+        setGenres(genres_.data.genres)
+        setLoading(false);
+      }))
+      .catch((error: any) => {
+        console.log(error)
+        setLoading(false);
+      })
+    },[url,urlGenre])
 
-    return (
+  const _renderItem = ({item}:ISmallCard) => <SmallCard 
+    key={item.id}
+    id={item.id} 
+    title={item.original_title ? item.original_title : item.original_name} 
+    poster_path={item.poster_path} 
+    vote_average={item.vote_average} 
+    isMovie={isMovie}          
+    genre={genres.filter(item2 => item.genre_ids.includes(item2.id)).map(item => item = item.name).join(', ') }          
+  />
+
+  if (loading)
+    return <Loading />
+
+  if (items.length == 0)
+    return null;  
+
+  return (
         <View>
           <FlatList 
             ListHeaderComponent={() => <TitlePage marginTop={15}>{title}</TitlePage> }

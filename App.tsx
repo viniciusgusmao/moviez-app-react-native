@@ -39,8 +39,22 @@ const Home:React.FC = () => (
       }
     }}
   >
-    <Tab.Screen name="Movies" component={Dashboard} initialParams={{ isMovie: true, title1: "Upcoming", title2: "Popular"  }} />
-    <Tab.Screen name="TV" component={Dashboard} initialParams={{ isMovie: false, title1: "Popular", title2: "Top Rated"  }} />
+    <Tab.Screen name="Movies" component={Dashboard} initialParams={{ 
+      isMovie: true, 
+      title1: "Upcoming", 
+      title2: "Popular",
+      url1: "movie/upcoming",
+      url2: "movie/top_rated",
+      urlGenre: "genre/movie/list"
+    }} />
+    <Tab.Screen name="TV" component={Dashboard} initialParams={{ 
+      isMovie: false, 
+      title1: "Popular", 
+      title2: "Top Rated",
+      url1: "tv/popular",
+      url2: "tv/top_rated",
+      urlGenre: "genre/tv/list"
+    }} />
   </Tab.Navigator>
 );
 
