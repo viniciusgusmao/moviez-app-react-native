@@ -7,6 +7,7 @@ import Line from 'components/Line';
 import { getDynamicDataByUrlParam } from 'services';
 import Loading from 'components/Loading';
 import axios from 'axios';
+import PlaceholderVertical from 'components/PlaceholderVertical';
 
 type Props = {
   url: string,
@@ -45,7 +46,7 @@ const VerticalCard: React.FC<Props> = ({ title, url, urlGenre, isMovie }: Props 
   />
 
   if (loading)
-    return <Loading />
+    return <PlaceholderVertical />
 
   if (items.length == 0)
     return null;  

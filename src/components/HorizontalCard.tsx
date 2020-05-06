@@ -4,7 +4,7 @@ import BigCard from 'components/BigCard';
 import { TitlePage } from 'components/Common';
 import { IBigCard } from 'interfaces';
 import { getDynamicDataByUrlParam } from 'services';
-import Loading from 'components/Loading';
+import PlaceholderHorizontal from 'components/PlaceholderHorizontal';
 
 type Props = {
   title: string,
@@ -39,7 +39,7 @@ const HorizontalCard:React.FC<Props> = ({ url, title, isMovie }: Props) => {
   />
 
   if (loading)
-    return <Loading />
+    return <PlaceholderHorizontal />
 
   return (
   <View>
