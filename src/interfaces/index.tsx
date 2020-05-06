@@ -30,8 +30,37 @@ export interface IMovie {
   genre: IGenre,
   budget: number,
   overview: string,
+  backdrop_path: string, 
+  homepage: string,
+}
+
+export interface ICreators {
+  id: number,
+  name: string,
+  profile_path: string
+}
+
+export interface ISeason {
+  air_date: string,
+  episode_count: number,
+  name: string,
+  poster_path: string,
+  season_number: number
+}
+
+export interface ITv {  
+  name: string,
+  first_air_date: string,
+  original_name: string,
+  vote_average: number,
+  genres: IGenre,
+  overview: string,
   backdrop_path: string,
-  production_companies: IProductionCompany[]
+  created_by: ICreators[],
+  homepage: string,
+  seasons: ISeason[],
+  status: string,
+  number_of_seasons: number
 }
 
 export interface IPhoto {

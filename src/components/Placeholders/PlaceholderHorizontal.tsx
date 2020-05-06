@@ -2,12 +2,11 @@ import React from 'react';
 import {
   Placeholder,
   PlaceholderMedia,
-  PlaceholderLine,
-  Shine
+  Fade
 } from "rn-placeholder";
 
 const PlaceholderHorizontal: React.FC = () => <Placeholder
-    Animation={Shine}
+    Animation={Fade}
     Left={() => <><PlaceholderMedia style={{ marginRight: 10, width: 140, height: 200 }} />
     <PlaceholderMedia style={{ marginRight: 10, width: 140, height: 200 }} />
     <PlaceholderMedia style={{ marginRight: 10, width: 140, height: 200 }} />

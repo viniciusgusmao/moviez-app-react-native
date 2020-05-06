@@ -4,7 +4,7 @@ import BigCard from 'components/BigCard';
 import { TitlePage } from 'components/Common';
 import { IBigCard } from 'interfaces';
 import { getDynamicDataByUrlParam } from 'services';
-import PlaceholderHorizontal from 'components/PlaceholderHorizontal';
+import PlaceholderHorizontal from 'components/Placeholders/PlaceholderHorizontal';
 
 type Props = {
   title: string,

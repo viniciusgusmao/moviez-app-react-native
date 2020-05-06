@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { View, FlatList } from 'react-native';
 import { TitlePage } from './Common';
-import { ISmallCard, IGenre } from 'interfaces';
+import { ISmallCard } from 'interfaces';
 import SmallCard from './SmallCard';
 import Line from 'components/Line';
 import { getDynamicDataByUrlParam } from 'services';
-import Loading from 'components/Loading';
 import axios from 'axios';
-import PlaceholderVertical from 'components/PlaceholderVertical';
+import PlaceholderVertical from 'components/Placeholders/PlaceholderVertical';
 
 type Props = {
   url: string,

@@ -1,9 +1,10 @@
 import React,{ useEffect, useState } from 'react';
-import { Dimensions, View } from 'react-native';
-import styled from 'styled-components';
 import { MaterialIcons } from '@expo/vector-icons';
 
-import { getMovieById } from 'services/movie';
+import { MainSection, SectionButton, Section, BackdropImage, ButtonHeader, TitleDetailPage } from 'components/DetailsMovieAndTv';
+
+import { getDynamicDataByUrlParam } from 'services';
+import PlaceholderDetailMovie from 'components/Placeholders/PlaceholderDetailMovie';
 import Loading from 'components/Loading';
 import { IMovie, IGenre } from 'interfaces';
 import { PropsRoute } from 'types';
@@ -11,7 +12,6 @@ import urls from 'res/urls';
 import BoxItem from 'components/BoxItem';
 import Container from 'components/Container';
 import ImagesGallery from 'screens/Movie/ImagesGallery';
-import SimilarMovies from 'screens/Movie/SimilarMovies';
 import VerticalCard from 'components/VerticalCard';
 
 const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
@@ -20,10 +20,11 @@ const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getMovieById(id).then(({data}: IMovie) => {
-      setItem(data);
-      setLoading(false);
-    })
+    getDynamicDataByUrlParam(`movie/${id}`)
+      .then(({data}: IMovie) => {
+        setItem(data);
+        setLoading(false);
+     })
   }, [])
 
   if (loading)
@@ -40,14 +41,14 @@ const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
             <MaterialIcons name="home" size={34} color="white" />
           </ButtonHeader>
         </SectionButton>
-        <Title style={{
+        <TitleDetailPage style={{
           textShadowColor: 'dimgray',
           textShadowOffset: {
             width: 1,
             height: 1
           },
           textShadowRadius: 1
-        }}>{item.original_title}</Title>
+        }}>{item.original_title}</TitleDetailPage>
       </BackdropImage>
       <MainSection>
         <Section>
@@ -57,7 +58,7 @@ const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
         </Section>
         <Section>
           <BoxItem label="Genre" description={item.genres.map((item: IGenre) => item = item.name).join(', ')} />
-          <BoxItem label="Budget" description={`$${item.budget}`} />
+          <BoxItem label="Budget" description={item.budget} />
         </Section>
         <Section>
           <BoxItem label="Overview" description={item.overview} />
@@ -71,42 +72,4 @@ const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
     </Container>
   );
 };
-
-const MainSection = styled.View`
-  padding: 10px;
-`;
-
-const SectionButton = styled.View`
-  flex-direction: row;
-  justify-content: space-between;
-`;
-
-const Section = styled.View`
-  justify-content: space-between;
-  flex-direction: row;
-  margin-bottom: 15px;
-`;
-
-const BackdropImage = styled.ImageBackground`
-  width: 100%;
-  height: ${`${Dimensions.get('window').height*0.45}px`};
-  padding: 10px;
-  justify-content: space-between;
-`;
-
-const ButtonHeader = styled.TouchableOpacity`
-  background-color: dimgray;
-  width: 40px;
-  border-radius: 20px;
-  padding: 3px;
-`;
-
-const Title = styled.Text`
-  color: white;
-  font-weight: bold;
-  font-size: 38px;
-  margin-bottom: 20px;
-
-`;
-
 export default Movie;

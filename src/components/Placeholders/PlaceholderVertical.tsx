@@ -3,11 +3,11 @@ import {
   Placeholder,
   PlaceholderMedia,
   PlaceholderLine,
-  Shine
+  Fade
 } from "rn-placeholder";
 
 const PlaceholderVertical: React.FC = () => <><Placeholder
-    Animation={Shine}
+    Animation={Fade}
     style={{ marginTop: 15 }}
     Left={() => <PlaceholderMedia style={{ marginRight: 10, width: 90, height: 120 }} />}
   >
@@ -17,7 +17,7 @@ const PlaceholderVertical: React.FC = () => <><Placeholder
     <PlaceholderLine width={40} />
   </Placeholder>
   <Placeholder
-    Animation={Shine}
+    Animation={Fade}
     style={{ marginTop: 15 }}
     Left={() => <PlaceholderMedia style={{ marginRight: 10, width: 90, height: 120 }} />}
   >

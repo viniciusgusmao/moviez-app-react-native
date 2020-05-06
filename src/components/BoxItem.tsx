@@ -15,6 +15,7 @@ const BoxItem:React.FC<Props> = ({ label, description }: Props) => (
 
 const Container = styled.View`
   flex-direction: column;
+  flex: 1; 
 `;
 
 const Label = styled.Text`
