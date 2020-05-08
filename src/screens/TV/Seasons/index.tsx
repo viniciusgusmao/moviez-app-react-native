@@ -14,6 +14,11 @@ const Seasons: React.FC = ({data}) => {
             ItemSeparatorComponent={() => <View style={{ marginVertical: 5 }} />}
             renderItem={_renderItem}
             keyExtractor={item => item.id}
+            getItemLayout={(data, index) => (
+              {length: 120, offset: 120 * index, index}
+            )}
+            initialNumToRender={4}
+            removeClippedSubviews={true}
           />;
 }
 

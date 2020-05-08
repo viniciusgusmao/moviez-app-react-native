@@ -47,7 +47,7 @@ const Tv:React.FC<ITv> = ({ route }: PropsRoute) => {
         <Section>
           <Seasons data={item.seasons} />
         </Section>        
-        <VerticalCard title="Similar TV Shows" url={`tv/${id}/similar`} urlGenre="genre/tv/list" isMovie={false} />
+        {/* <VerticalCard title="Similar TV Shows" url={`tv/${id}/similar`} urlGenre="genre/tv/list" isMovie={false} /> */}
       </MainSection>
     </Container>
   );

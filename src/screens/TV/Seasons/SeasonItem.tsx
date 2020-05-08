@@ -8,7 +8,7 @@ import BoxItem from 'components/BoxItem';
 
 const SeasonItem: React.FC = (props: ISeason) => {
   return <Container>
-    {props.poster_path ? <Poster resizeMode="cover" source={{ uri: `${urls.baseImages}${props.poster_path}` }}/> : <NoImage><Text style={{ fontSize: 12, textAlign: "center", color: 'silver' }}>Image not found</Text></NoImage>}
+  {props.poster_path ? <Poster resizeMode="cover" source={{ uri: `${urls.baseImages}${props.poster_path}` }}/> : <NoImage><Text style={{ fontSize: 12, textAlign: "center", color: 'silver' }}>Image not found</Text></NoImage>}
     <SubContainer>
       <Section>
         <BoxItem label="Name" description={props.name} />

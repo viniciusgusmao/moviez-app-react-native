@@ -53,6 +53,8 @@ const ImagesGallery:React.FC<Props> = ({ label, movieId }: Props) => {
           keyExtractor={(_, index) => index}
           numColumns={numberGrid} data={images} 
           renderItem={renderItem} 
+          initialNumToRender={4}
+          removeClippedSubviews={true}
         />
       </View>
     );

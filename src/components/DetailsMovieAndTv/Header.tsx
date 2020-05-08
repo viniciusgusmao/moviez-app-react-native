@@ -4,8 +4,6 @@ import urls from 'res/urls';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
-import ImageNotFound from 'components/ImageNotFound';
-import { Dimensions } from 'react-native';
 
 type Props = {
   title: string,

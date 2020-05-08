@@ -57,6 +57,9 @@ const HorizontalCard:React.FC<Props> = ({ url, title, isMovie }: Props) => {
       data={items}
       renderItem={_renderItem}
       horizontal={true}
+      initialNumToRender={5}
+      removeClippedSubviews={true}
+      windowSize={5}
     />
   </View>
   );

@@ -1,6 +1,7 @@
 import React,{ useEffect, useState } from 'react';
-
-import { MainSection, Section } from 'components/DetailsMovieAndTv';
+import { Text } from 'react-native';
+import { MainSection, Section, ButtonMoreSimilarItems, TextButtonMoreSimilarItems } from 'components/DetailsMovieAndTv';
+import { FontAwesome } from '@expo/vector-icons'; 
 
 import { getDynamicDataByUrlParam } from 'services';
 import Loading from 'components/Loading';
@@ -11,11 +12,14 @@ import Container from 'components/Container';
 import ImagesGallery from 'screens/Movie/ImagesGallery';
 import VerticalCard from 'components/VerticalCard';
 import Header from 'components/DetailsMovieAndTv/Header';
+import { LinearGradient } from 'expo-linear-gradient';
+import colors from 'res/colors';
 
 const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
   const [item, setItem] = useState<IMovie>({})
   const { id } = route.params;
   const [loading, setLoading] = useState(true);
+  const [similarMovies, setSimilarMovies] = useState(false);
 
   useEffect(() => {
     getDynamicDataByUrlParam(`movie/${id}`)
@@ -46,9 +50,23 @@ const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
         </Section>
         <Section>
           <ImagesGallery label="More Images" movieId={id} />
-        </Section>
-
-        <VerticalCard title="Similar Movies" url={`movie/${id}/similar`} urlGenre="genre/movie/list" isMovie={true} />
+        </Section>        
+        {/* {!similarMovies && <LinearGradient
+          onTouchStart={() => setSimilarMovies(true)}
+          colors={[colors.lightPurple, '#3b5998']}
+          style={{ padding: 15, alignItems: 'center', borderRadius: 5, flexDirection: 'row', justifyContent: 'center' }}>
+          <Text
+            style={{
+              backgroundColor: 'transparent',
+              fontSize: 15,
+              color: '#fff',
+              marginRight: 6
+            }}>
+           Search form similar movies
+          </Text>
+          <FontAwesome name="object-ungroup" size={20} color="white" />
+        </LinearGradient>} */}
+        {/* {similarMovies && <VerticalCard title="Similar Movies" url={`movie/${id}/similar`} urlGenre="genre/movie/list" isMovie={true} />} */}
       </MainSection>
     </Container>
   );

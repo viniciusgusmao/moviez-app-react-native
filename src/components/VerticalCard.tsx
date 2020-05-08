@@ -61,6 +61,13 @@ const VerticalCard: React.FC<Props> = ({ title, url, urlGenre, isMovie, query = 
             ItemSeparatorComponent={() => <Line />}
             renderItem={_renderItem}
             keyExtractor={item => item.id}
+            initialNumToRender={5}
+            maxToRenderPerBatch={5}
+            removeClippedSubviews={true}
+            getItemLayout={(data, index) => (
+              {length: 120, offset: 120 * index, index}
+            )}
+            windowSize={5}
           />
         </View>
     )
