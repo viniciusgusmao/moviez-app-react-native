@@ -30,7 +30,7 @@ const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
 
   return (
     <Container padding={0}>    
-      <Header title={item.original_title} backdrop_path={item.backdrop_path} poster_path={item.poster_path}  />
+      <Header title={item.title} backdrop_path={item.backdrop_path} poster_path={item.poster_path}  />
       <MainSection>
         <Section>
           <BoxItem label="Release Date" description={item.release_date} />

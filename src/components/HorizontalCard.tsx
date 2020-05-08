@@ -37,7 +37,7 @@ const HorizontalCard:React.FC<Props> = ({ url, title, isMovie }: Props) => {
   const _renderItem = ({item}:IBigCard) => <BigCard 
     key={item.id}
     id={item.id} 
-    title={item.original_title ? item.original_title : item.original_name}  
+    title={item.title ? item.title : item.name}  
     poster_path={item.poster_path} 
     isMovie={isMovie}        
     vote_average={item.vote_average} 

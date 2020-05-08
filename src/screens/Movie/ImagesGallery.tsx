@@ -1,6 +1,6 @@
 import React,{ useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { getImagesMovieById } from 'services/movie';
+import { getDynamicDataByUrlParam } from 'services';
 import Loading from 'components/Loading';
 import urls from 'res/urls';
 import { Dimensions, Image, FlatList, View, Text } from 'react-native';
@@ -19,10 +19,15 @@ const ImagesGallery:React.FC<Props> = ({ label, movieId }: Props) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getImagesMovieById(movieId).then(({data}: any) => {
-      setImages(data.backdrops);
-      setLoading(false);
-    })
+    getDynamicDataByUrlParam(`movie/${movieId}/images`)
+      .then(({data}: any) => {
+        console.log(data,movieId)
+        setImages(data.backdrops);
+        setLoading(false);
+     })
+     .catch((error: string) => {
+       console.log(error)
+     })
   }, [])
 
   const renderItem:React.FC = ({item}) => {

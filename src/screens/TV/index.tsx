@@ -4,7 +4,6 @@ import { getDynamicDataByUrlParam } from 'services';
 import Loading from 'components/Loading';
 import { ITv, IGenre } from 'interfaces';
 import { PropsRoute } from 'types';
-import urls from 'res/urls';
 import BoxItem from 'components/BoxItem';
 import Container from 'components/Container';
 import VerticalCard from 'components/VerticalCard';
