@@ -8,6 +8,7 @@ import { getDynamicDataByUrlParam } from 'services';
 import axios from 'axios';
 import PlaceholderVertical from 'components/Placeholders/PlaceholderVertical';
 
+
 type Props = {
   url: string,
   title: string,

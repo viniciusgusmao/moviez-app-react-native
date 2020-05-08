@@ -22,7 +22,7 @@ const Header: React.FC<Props> = ({ title, backdrop_path, poster_path }:Props) =>
             left: 0,
             right: 0,
             top: 0,
-            height: 150,
+            height: 100,
           }}
         />
     <SectionButton>

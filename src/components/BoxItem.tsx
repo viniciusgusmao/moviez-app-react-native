@@ -1,15 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import NumberFormat from 'react-number-format';
 
 type Props = {
   label: string,
-  description: string
+  description: string,
+  isCurrency?: boolean
 }
 
-const BoxItem:React.FC<Props> = ({ label, description }: Props) => (
+const BoxItem:React.FC<Props> = ({ label, description, isCurrency = false }: Props) => (
     <Container>
       <Label>{label}</Label>
-      <Description>{description}</Description>
+      {!isCurrency ? <Description>{description}</Description> : <NumberFormat decimalSeparator="," value={description} displayType={'text'} thousandSeparator="." prefix={'$'} renderText={(value) => <Description>{value}</Description>}  />}
     </Container>
 );
 

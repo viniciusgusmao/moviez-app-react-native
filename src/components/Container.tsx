@@ -15,6 +15,7 @@ const Container: React.FC<Props> = ({ children, padding = 15 }: Props) => {
       <SafeAreaView style={{
         flex: 1,
         marginTop: Constants.statusBarHeight,
+        backgroundColor: 'white'
       }}>
         <ScrollView contentContainerStyle={{
           padding,

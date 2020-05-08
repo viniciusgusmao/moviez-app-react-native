@@ -39,7 +39,7 @@ const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
         </Section>
         <Section>
           <BoxItem label="Genre" description={item.genres.map((item: IGenre) => item = item.name).join(', ')} />
-          <BoxItem label="Budget" description={item.budget} />
+          <BoxItem label="Budget" description={item.budget} isCurrency={true} />
         </Section>
         <Section>
           <BoxItem label="Overview" description={item.overview} />

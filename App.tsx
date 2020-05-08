@@ -10,6 +10,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import Dashboard from 'screens/Dashboard';
 import Movie from 'screens/Movie';
 import TV from 'screens/TV';
+import Search from 'screens/Search';
 import colors from 'res/colors';
 
 const Tab = createBottomTabNavigator();
@@ -68,6 +69,9 @@ const App:React.FC = () => (
         headerShown: false
       }} />
       <Stack.Screen name="TVDetails" component={TV} options={{
+        headerShown: false
+      }} />
+      <Stack.Screen name="Search" component={Search} options={{
         headerShown: false
       }} />
     </Stack.Navigator>

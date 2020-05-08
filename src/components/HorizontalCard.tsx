@@ -1,10 +1,14 @@
 import React,{ useEffect, useState } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList, View, TouchableOpacity } from 'react-native';
 import BigCard from 'components/BigCard';
 import { TitlePage } from 'components/Common';
 import { IBigCard } from 'interfaces';
 import { getDynamicDataByUrlParam } from 'services';
 import PlaceholderHorizontal from 'components/Placeholders/PlaceholderHorizontal';
+import { MaterialIcons } from '@expo/vector-icons';
+import styled from 'styled-components';
+import { useNavigation } from '@react-navigation/native';
+
 
 type Props = {
   title: string,
@@ -15,6 +19,7 @@ type Props = {
 const HorizontalCard:React.FC<Props> = ({ url, title, isMovie }: Props) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false)
+  const navigation = useNavigation();
 
   useEffect(() => {
     setLoading(true);
@@ -43,7 +48,10 @@ const HorizontalCard:React.FC<Props> = ({ url, title, isMovie }: Props) => {
 
   return (
   <View>
-    <TitlePage>{title}</TitlePage>
+    <Header>
+      <TitlePage>{title}</TitlePage>
+      <TouchableOpacity onPress={() => navigation.navigate('Search',{ isMovie })  }><MaterialIcons name="search" size={34} color="black" /></TouchableOpacity>
+    </Header>
     <FlatList 
       keyExtractor={item => item.id}
       data={items}
@@ -54,6 +62,10 @@ const HorizontalCard:React.FC<Props> = ({ url, title, isMovie }: Props) => {
   );
 }
 
+const Header = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+`;
 
 export default HorizontalCard;
 
