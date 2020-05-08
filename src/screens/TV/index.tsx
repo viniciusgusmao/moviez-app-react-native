@@ -1,7 +1,5 @@
 import React,{ useEffect, useState } from 'react';
 
-import { MaterialIcons } from '@expo/vector-icons';
-
 import { getDynamicDataByUrlParam } from 'services';
 import Loading from 'components/Loading';
 import { ITv, IGenre } from 'interfaces';
@@ -12,9 +10,10 @@ import Container from 'components/Container';
 import VerticalCard from 'components/VerticalCard';
 import Seasons from 'screens/TV/Seasons';
 
-import { MainSection, SectionButton, Section, BackdropImage, ButtonHeader, TitleDetailPage } from 'components/DetailsMovieAndTv';
+import { MainSection, Section} from 'components/DetailsMovieAndTv';
+import Header from 'components/DetailsMovieAndTv/Header';
 
-const Tv:React.FC<ITv> = ({ route, navigation }: PropsRoute) => {
+const Tv:React.FC<ITv> = ({ route }: PropsRoute) => {
   const [item, setItem] = useState<ITv>({})
   const { id } = route.params;
   const [loading, setLoading] = useState(true);
@@ -32,24 +31,7 @@ const Tv:React.FC<ITv> = ({ route, navigation }: PropsRoute) => {
 
   return (
     <Container padding={0}>    
-      <BackdropImage imageStyle={{ resizeMode: 'cover' }} source={{ uri: `${urls.baseImages}${item.backdrop_path ? item.backdrop_path : item.poster_path }` }} >
-        <SectionButton>
-          <ButtonHeader onPress={() => navigation.goBack() }>
-            <MaterialIcons name="arrow-back" size={34} color="white" />
-          </ButtonHeader>
-          <ButtonHeader onPress={() => navigation.navigate('Home') }>
-            <MaterialIcons name="home" size={34} color="white" />
-          </ButtonHeader>
-        </SectionButton>
-        <TitleDetailPage style={{
-          textShadowColor: 'dimgray',
-          textShadowOffset: {
-            width: 1,
-            height: 1
-          },
-          textShadowRadius: 1
-        }}>{item.name}</TitleDetailPage>
-      </BackdropImage>
+      <Header title={item.name} backdrop_path={item.backdrop_path} poster_path={item.poster_path}  />
       <MainSection>
         <Section>
           <BoxItem label="First air date" description={item.first_air_date} />
@@ -65,8 +47,7 @@ const Tv:React.FC<ITv> = ({ route, navigation }: PropsRoute) => {
         </Section>
         <Section>
           <Seasons data={item.seasons} />
-        </Section>
-        
+        </Section>        
         <VerticalCard title="Similar TV Shows" url={`tv/${id}/similar`} urlGenre="genre/tv/list" isMovie={false} />
       </MainSection>
     </Container>

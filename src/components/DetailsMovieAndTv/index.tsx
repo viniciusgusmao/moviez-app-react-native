@@ -24,9 +24,7 @@ export const BackdropImage = styled.ImageBackground`
 `;
 
 export const ButtonHeader = styled.TouchableOpacity`
-  background-color: dimgray;
   width: 40px;
-  border-radius: 20px;
   padding: 3px;
 `;
 

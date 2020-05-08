@@ -1,18 +1,16 @@
 import React,{ useEffect, useState } from 'react';
-import { MaterialIcons } from '@expo/vector-icons';
 
-import { MainSection, SectionButton, Section, BackdropImage, ButtonHeader, TitleDetailPage } from 'components/DetailsMovieAndTv';
+import { MainSection, Section } from 'components/DetailsMovieAndTv';
 
 import { getDynamicDataByUrlParam } from 'services';
-import PlaceholderDetailMovie from 'components/Placeholders/PlaceholderDetailMovie';
 import Loading from 'components/Loading';
 import { IMovie, IGenre } from 'interfaces';
 import { PropsRoute } from 'types';
-import urls from 'res/urls';
 import BoxItem from 'components/BoxItem';
 import Container from 'components/Container';
 import ImagesGallery from 'screens/Movie/ImagesGallery';
 import VerticalCard from 'components/VerticalCard';
+import Header from 'components/DetailsMovieAndTv/Header';
 
 const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
   const [item, setItem] = useState<IMovie>({})
@@ -32,24 +30,7 @@ const Movie:React.FC<IMovie> = ({ route, navigation }: PropsRoute) => {
 
   return (
     <Container padding={0}>    
-      <BackdropImage imageStyle={{ resizeMode: 'cover' }} source={{ uri: `${urls.baseImages}${item.backdrop_path ? item.backdrop_path : item.poster_path }` }} >
-        <SectionButton>
-          <ButtonHeader onPress={() => navigation.goBack() }>
-            <MaterialIcons name="arrow-back" size={34} color="white" />
-          </ButtonHeader>
-          <ButtonHeader onPress={() => navigation.navigate('Home') }>
-            <MaterialIcons name="home" size={34} color="white" />
-          </ButtonHeader>
-        </SectionButton>
-        <TitleDetailPage style={{
-          textShadowColor: 'dimgray',
-          textShadowOffset: {
-            width: 1,
-            height: 1
-          },
-          textShadowRadius: 1
-        }}>{item.original_title}</TitleDetailPage>
-      </BackdropImage>
+      <Header title={item.original_title} backdrop_path={item.backdrop_path} poster_path={item.poster_path}  />
       <MainSection>
         <Section>
           <BoxItem label="Release Date" description={item.release_date} />
