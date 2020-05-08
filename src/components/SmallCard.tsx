@@ -7,6 +7,7 @@ import { SubtitleThumb } from 'components/Common';
 import { ISmallCard } from 'interfaces';
 import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import ImageNotFound from 'components/ImageNotFound';
 
 const SmallCard: React.FC<ISmallCard> = ({ id, poster_path, title, vote_average, genre, isMovie }) => {
   const navigation = useNavigation();
@@ -14,7 +15,7 @@ const SmallCard: React.FC<ISmallCard> = ({ id, poster_path, title, vote_average,
   return (
     <TouchableOpacity onPress={() => navigation.navigate({ name: screen, key: id, params: { id } })}>
       <Container>
-        <Poster resizeMode="cover" source={{ uri: `${urls.baseImages}${poster_path}`}} />
+        {poster_path ? <Poster resizeMode="cover" source={{ uri: `${urls.baseImages}${poster_path}`}} /> : <ImageNotFound width={90} height={120} />}
         <SubContainer>
           <TitleThumb fontSize={16}>{title}</TitleThumb>
           <Star vote_average={vote_average} />

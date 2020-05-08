@@ -6,6 +6,7 @@ import urls from 'res/urls';
 import { IBigCard } from 'interfaces';
 import { TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import ImageNotFound from 'components/ImageNotFound';
 
 const BigCard: React.FC<IBigCard> = ({ id, poster_path, title, vote_average, isMovie }) => {
   const navigation = useNavigation();
@@ -13,7 +14,7 @@ const BigCard: React.FC<IBigCard> = ({ id, poster_path, title, vote_average, isM
   return (
     <TouchableOpacity onPress={() => navigation.navigate({ name: screen, key: id, params: { id } })}>
       <Container>
-        <Poster resizeMode="cover" source={{ uri: `${urls.baseImages}${poster_path}`}} />
+        {poster_path ? <Poster resizeMode="cover" source={{ uri: `${urls.baseImages}${poster_path}`}} /> : <ImageNotFound width={140} height={200} />}
         <TitleThumb fontSize={16}>{title.length > 25 ? title.substr(0,25)+'...' : title}</TitleThumb>
         <Star vote_average={vote_average} />
       </Container>

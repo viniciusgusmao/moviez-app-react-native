@@ -14,16 +14,17 @@ type Props = {
   title: string,
   urlGenre: string,
   isMovie: boolean,
+  query?: string | null
 } 
 
-const VerticalCard: React.FC<Props> = ({ title, url, urlGenre, isMovie }: Props ) => {
+const VerticalCard: React.FC<Props> = ({ title, url, urlGenre, isMovie, query = null }: Props ) => {
   const [items, setItems] = useState([]);
   const [genres, setGenres] = useState([]);
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     setLoading(true);
-    axios.all([getDynamicDataByUrlParam(url), getDynamicDataByUrlParam(urlGenre)])
+    axios.all([getDynamicDataByUrlParam(url,query), getDynamicDataByUrlParam(urlGenre)])
       .then(axios.spread((items_: any, genres_: any) => {
         setItems(items_.data.results);
         setGenres(genres_.data.genres)
@@ -33,7 +34,8 @@ const VerticalCard: React.FC<Props> = ({ title, url, urlGenre, isMovie }: Props 
         console.log(error)
         setLoading(false);
       })
-    },[url,urlGenre])
+      
+    },[url,urlGenre,query])
 
   const _renderItem = ({item}:ISmallCard) => <SmallCard 
     key={item.id}

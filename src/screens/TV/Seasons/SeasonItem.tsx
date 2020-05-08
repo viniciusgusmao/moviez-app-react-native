@@ -45,7 +45,6 @@ const NoImage = styled.View`
   background-color: whitesmoke;
   justify-content: center;
   align-content: center;
-  
 `;
 
 

@@ -6,6 +6,9 @@ import axios from 'axios';
 const { api_key } = config;
 const params_ = { params: { page: 1, api_key } };
 
-export const getDynamicDataByUrlParam = (url: string) => {
+export const getDynamicDataByUrlParam = (url: string, search = null) => {
+  if (search)
+    params_.params.query = search;
+
   return axios.get(`${urls.baseUrlApi}/${url}`, params_ );
 }
