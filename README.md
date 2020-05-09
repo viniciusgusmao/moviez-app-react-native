@@ -1,8 +1,8 @@
-# Moviez App
+# Moviez
 >This app was developed using React Native with Expo/Typescript and designed in Figma.
 
 ## Overview
-The main feature of Moviez App is to query movies and TV shows directly from the excellent API *The Movie Database API* https://developers.themoviedb.org/
+The main feature of Moviez is to query movies and TV shows directly from the excellent API *The Movie Database API* https://developers.themoviedb.org/
 
 ## Screenshots
 
