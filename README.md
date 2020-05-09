@@ -8,7 +8,7 @@ The main feature of Moviez is to query movies and TV shows directly from the exc
 
 <table>
   <tr>
-    <td><img src="https://i.ibb.co/kynzMGx/Screenshot-20200508-195512-2.png" /></td>
+    <td><img src="https://i.ibb.co/Rv2qr4p/videotogif-2020-05-08-22-23-06.gif" /></td>
     <td><img src="https://i.ibb.co/FxHsrnh/Screenshot-20200508-195319-2.png" /></td>
     <td><img src="https://i.ibb.co/Lts1QqV/Screenshot-20200508-195549.png" /></td>
   </tr>
